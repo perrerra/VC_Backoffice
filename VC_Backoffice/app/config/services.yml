@@ -7,3 +7,18 @@ services:
     #service_name:
     #    class: AppBundle\Directory\ClassName
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+    admin.user:
+        class: AppBundle\Admin\UserAdmin
+        arguments: [~, AppBundle\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: User }
+    admin.bike:
+        class: AppBundle\Admin\BikeAdmin
+        arguments: [~, AppBundle\Entity\Bike, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Bike }
+    admin.ride:
+        class: AppBundle\Admin\RideAdmin
+        arguments: [~, AppBundle\Entity\Ride, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Ride }

@@ -43,10 +43,10 @@ class Ride
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="rides")
-     * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="rides")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $person;
+    private $user;
     
 	/**
      * @ORM\ManyToOne(targetEntity="Bike", inversedBy="rides")
@@ -62,6 +62,38 @@ class Ride
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBike()
+    {
+        return $this->bike;
+    }
+
+    /**
+     * @param mixed $bike
+     */
+    public function setBike($bike)
+    {
+        $this->bike = $bike;
     }
 
     /**

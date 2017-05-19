@@ -31,22 +31,47 @@ class Bike
     /**
      * @var int
      *
-     * @ORM\Column(name="type", type="integer")
-     */
-    private $type;
-
-    /**
-     * @var int
-     *
      * @ORM\Column(name="wheelSize", type="integer")
      */
     private $wheelSize;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="bikes")
-     * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="bikes")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $person;
+    private $user;
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRides()
+    {
+        return $this->rides;
+    }
+
+    /**
+     * @param mixed $rides
+     */
+    public function setRides($rides)
+    {
+        $this->rides = $rides;
+    }
 
     /**
      * @ORM\OneToMany(targetEntity="Ride", mappedBy="bike")
@@ -85,30 +110,6 @@ class Bike
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set type
-     *
-     * @param integer $type
-     *
-     * @return Bike
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return int
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**
