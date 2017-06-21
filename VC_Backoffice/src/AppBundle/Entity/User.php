@@ -33,4 +33,52 @@ class User extends BaseUser
      */
     private $rides;
 
+    /**
+     * @return mixed
+     */
+    public function getBikes()
+    {
+        return $this->bikes;
+    }
+
+    /**
+     * @param mixed $bikes
+     */
+    public function setBikes($bikes)
+    {
+        $this->bikes = $bikes;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRides()
+    {
+        return $this->rides;
+    }
+
+    /**
+     * @param mixed $rides
+     */
+    public function setRides($rides)
+    {
+        $this->rides = $rides;
+    }
+
 }

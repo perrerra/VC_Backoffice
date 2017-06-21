@@ -27,15 +27,15 @@ class RideAdmin extends AbstractAdmin
                 'class' => 'AppBundle\Entity\Bike',
                 'choice_label' => 'name',
             ))
-            ->add('bike', null, array(
+/*            ->add('bike', null, array(
                 'class' => 'AppBundle\Entity\Bike',
                 'query_builder' => function($repository) {
                     return $repository->createQueryBuilder('u')
                         ->leftJoin('u.user', 'w')
                         ->where('w');
-                }))
-            ->add('startDate', 'date')
-            ->add('endDate', 'date')
+                }))*/
+            ->add('startDate', 'datetime')
+            ->add('endDate', 'datetime')
             ->add('description', 'textarea')
         ;
     }
@@ -57,4 +57,20 @@ class RideAdmin extends AbstractAdmin
             ->add('endDate')
         ;
     }
+
+/*    public function getTemplate($name)
+    {
+
+        switch ($name) {
+            case 'edit':
+                return 'AppBundle:RideAdmin:base_edit.html.twig';
+                break;
+
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }*/
+
+
 }

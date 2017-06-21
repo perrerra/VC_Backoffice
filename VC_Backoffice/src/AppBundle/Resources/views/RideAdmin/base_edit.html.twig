@@ -1,0 +1,53 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+                                                                                                                                                                                                For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+
+{% block javascripts %}
+{{ parent() }}
+
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        var users = $('#{{ admin.uniqId }}_user                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ');
+        users.change(updateBikes()); // Bind the function to updateCategories
+        users.change(); // Manual trigger to update categories in Document load.
+
+
+
+
+        function updateBikes(){
+            return function () {
+
+
+                var userID = $("#{{ admin.uniqId }}_user option:selected").val();
+                var bikes = $("#{{ admin.uniqId }}_bike");
+                bikes.empty();
+                bikes.trigger("liszt:updated");
+                var locale = '{{ app.request.get("_locale") }}';
+                var objectId = '{{ admin.id(object) }}'
+
+                var url = Routing.generate('get_bikes_for_user', {'userId': userID, _sonata_admin: 'admin.ride', id: objectId });
+
+                $.post(url, { userID: userID }, function(data){
+                    bikes.empty().append(data).change();
+                },"text");
+
+            };
+        }
+    });
+</script>
+{% endblock %}

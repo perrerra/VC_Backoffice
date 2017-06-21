@@ -19,6 +19,14 @@ services:
             - { name: sonata.admin, manager_type: orm, label: Bike }
     admin.ride:
         class: AppBundle\Admin\RideAdmin
-        arguments: [~, AppBundle\Entity\Ride, ~]
+        arguments: [~, AppBundle\Entity\Ride, AppBundle:RideAdmin]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Ride }
+        calls:
+            - [ setTemplate, [edit, AppBundle:RideAdmin:base_edit.html.twig]]
+    influxdb_client:
+      class: InfluxDB\Client
+      arguments: ['%influxdb_host%', '%influxdb_port%']
+    influxdb_database:
+      class: InfluxDB\Database
+      arguments: ['%influxdb_db%', '@influxdb_client']
