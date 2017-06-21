@@ -81,4 +81,12 @@ class User extends BaseUser
         $this->rides = $rides;
     }
 
+    public function toArray()
+    {
+        return array(
+            'id' => $this->id,
+            'username' => $this->username,
+        );
+    }
+
 }

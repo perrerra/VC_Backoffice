@@ -25,8 +25,8 @@ services:
         calls:
             - [ setTemplate, [edit, AppBundle:RideAdmin:base_edit.html.twig]]
     influxdb_client:
-      class: InfluxDB\Client
-      arguments: ['%influxdb_host%', '%influxdb_port%']
+        class: InfluxDB\Client
+        arguments: ['%influxdb_host%', '%influxdb_port%']
     influxdb_database:
-      class: InfluxDB\Database
-      arguments: ['%influxdb_db%', '@influxdb_client']
+        class: InfluxDB\Database
+        arguments: ['%influxdb_db%', '@influxdb_client']

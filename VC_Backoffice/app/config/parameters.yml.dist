@@ -15,5 +15,10 @@ parameters:
     mailer_user: ~
     mailer_password: ~
 
+    influxdb_host: 127.0.0.1
+    influxdb_port: 8086
+    influxdb_db: vc_influxdb
+
     # A secret key that's used to generate certain security-related tokens
-    secret: ThisTokenIsNotSoSecretChangeIt
+    secret: plems2015+
+
