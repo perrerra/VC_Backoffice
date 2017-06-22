@@ -1,0 +1,1 @@
+{"measures": [{"timestamp": 19090940,"temperature": 22,"rotations": 30,"tilts": 42,"slope": 12,"air_quality": 45},{"timestamp": 19090940,"temperature": 22,"rotations": 30,"tilts": 42,"slope": 12,"air_quality": 45}]}

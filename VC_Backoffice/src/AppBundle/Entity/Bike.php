@@ -24,7 +24,7 @@ class Bike
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @ORM\Column(name="name", type="string", length=255, unique=false)
      */
     private $name;
 
@@ -40,6 +40,19 @@ class Bike
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
+
+    /**
+     * Bike constructor.
+     * @param string $name
+     * @param int $wheelSize
+     * @param $user
+     */
+    public function __construct($name, $wheelSize, $user)
+    {
+        $this->name = $name;
+        $this->wheelSize = $wheelSize;
+        $this->user = $user;
+    }
 
     /**
      * @return mixed
@@ -135,4 +148,18 @@ class Bike
     {
         return $this->wheelSize;
     }
+
+    public function toArray()
+    {
+        return array(
+            'id' => $this->id,
+            'name' => $this->name,
+            'wheelsize' => $this->wheelSize,
+            'user' => $this->user->toArray(),
+        );
+    }
+
+
+
+
 }

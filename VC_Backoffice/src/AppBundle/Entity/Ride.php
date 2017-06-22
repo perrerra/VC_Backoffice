@@ -55,6 +55,19 @@ class Ride
     private $bike;
 
     /**
+     * Ride constructor.
+     * @param \DateTime $startDate
+     * @param $user
+     * @param $bike
+     */
+    public function __construct(\DateTime $startDate, $user, $bike)
+    {
+        $this->startDate = $startDate;
+        $this->user = $user;
+        $this->bike = $bike;
+    }
+
+    /**
      * Get id
      *
      * @return int

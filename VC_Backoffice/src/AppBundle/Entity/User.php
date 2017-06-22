@@ -86,6 +86,7 @@ class User extends BaseUser
         return array(
             'id' => $this->id,
             'username' => $this->username,
+            'email' => $this->email,
         );
     }
 
