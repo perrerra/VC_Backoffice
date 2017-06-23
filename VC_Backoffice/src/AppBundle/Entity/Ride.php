@@ -65,6 +65,7 @@ class Ride
         $this->startDate = $startDate;
         $this->user = $user;
         $this->bike = $bike;
+        $this->description = "";
     }
 
     /**

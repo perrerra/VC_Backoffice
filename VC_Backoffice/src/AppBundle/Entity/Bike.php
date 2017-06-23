@@ -154,8 +154,7 @@ class Bike
         return array(
             'id' => $this->id,
             'name' => $this->name,
-            'wheelsize' => $this->wheelSize,
-            'user' => $this->user->toArray(),
+            'wheelsize' => $this->wheelSize,    
         );
     }
 

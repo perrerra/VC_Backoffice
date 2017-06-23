@@ -4,11 +4,13 @@
 namespace AppBundle\Controller\Webservice;
 
 use AppBundle\Entity\Bike;
+use AppBundle\Entity\Ride;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class StartRideController extends Controller
 {
@@ -38,15 +40,16 @@ class StartRideController extends Controller
         if (null === $bike_id) {
             return new JsonResponse(array('status' => 0, 'message' => 'The "bike_id" parameter is missing from the request\'s body', 'request' => $request->request->all()), 422);
         }else{
-            $bike = $em->getRepository('AppBundle:Bike')->findOneById($user_id);
+            $bike = $em->getRepository('AppBundle:Bike')->findOneById($bike_id);
             if($bike === null){
                 return new JsonResponse(array('statut' => 0, 'message' => 'Bike not found.'), 422);
             }
         }
 
+        $date = new \DateTime();
+        $date->setTimestamp($startDate);
 
-
-        $ride = new Ride($startDate, $user, $bike);
+        $ride = new Ride($date, $user, $bike);
         $em->persist($ride);
         $em->flush();
 
