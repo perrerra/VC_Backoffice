@@ -13,6 +13,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 class UserAdmin extends AbstractAdmin
 {
@@ -21,7 +22,12 @@ class UserAdmin extends AbstractAdmin
         $formMapper
             ->add('username', 'text')
             ->add('email', 'text')
-            ->add('password', 'password')
+            ->add('plainPassword', 'repeated', array(
+                'type' => 'password',
+                'options' => array('translation_domain' => 'FOSUserBundle'),
+                'first_options' => array('label' => 'form.password'),
+                'second_options' => array('label' => 'form.password_confirmation'),
+                'invalid_message' => 'fos_user.password.mismatch'))
         ;
     }
 
@@ -40,4 +46,5 @@ class UserAdmin extends AbstractAdmin
             ->addIdentifier('email')
         ;
     }
+    
 }

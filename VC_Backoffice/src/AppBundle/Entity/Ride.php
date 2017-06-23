@@ -180,4 +180,16 @@ class Ride
     {
         return $this->description;
     }
+
+    public function toArray()
+    {
+        return array(
+            'id' => $this->id,
+            'bike' => $this->getBike()->toArray(),
+            'startdate' => $this->startDate,
+            'enddate' => $this->endDate,
+            'description' => $this->description,
+        );
+    }
+
 }

@@ -73,6 +73,16 @@ class User extends BaseUser
         return $this->rides;
     }
 
+
+    public function getRidesAsArray()
+    {
+        $rides_array = array();
+        foreach ($this->rides as $ride){
+            array_push($rides_array, $ride->toArray());
+        }
+        return $rides_array;
+    }
+
     /**
      * @param mixed $rides
      */

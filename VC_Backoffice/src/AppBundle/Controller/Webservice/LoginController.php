@@ -43,7 +43,8 @@ class LoginController extends Controller
             $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
         }
 
-        return new JsonResponse(array('login_status' => $auth), 201);
+        return new JsonResponse(array('login_status' => $auth, $user->toArray(), $user->getRidesAsArray()), 201);
+
     }
 
 }
