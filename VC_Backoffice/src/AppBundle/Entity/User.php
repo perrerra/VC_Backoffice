@@ -100,4 +100,11 @@ class User extends BaseUser
         );
     }
 
+    public function getBikesToArray(){
+        $bike_array = array();
+        foreach ($this->bikes as $bike){
+            array_push($bike_array, $bike->toArray());
+        }
+        return $bike_array;
+    }
 }

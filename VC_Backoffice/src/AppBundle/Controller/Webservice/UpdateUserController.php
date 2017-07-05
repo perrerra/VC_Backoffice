@@ -16,7 +16,7 @@ class UpdateUserController extends Controller
      * @Route("/api/user/updateuser")
      * @Method({"POST"})
      */
-    public function addUserAction(Request $request)
+    public function updateUserAction(Request $request)
     {
         //dump($request->request->all());
         $em = $this->get('doctrine.orm.entity_manager');
